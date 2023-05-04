@@ -47,7 +47,7 @@ async def create_todo(todo):
         func_name = tb_str[-1][2]
         db_error_handler(err, func_name)
 
-    return result
+    return document
 
 
 async def update_todo(title, description):
