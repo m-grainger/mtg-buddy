@@ -1,6 +1,6 @@
 import TodoItem from "./Todo";
 
-export default function TodoView(props) {
+const TodoView = (props) => {
   return (
     <div>
       <ul>
@@ -10,4 +10,6 @@ export default function TodoView(props) {
       </ul>
     </div>
   );
-}
+};
+
+export default TodoView;

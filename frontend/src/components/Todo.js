@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-function TodoItem(props) {
+const TodoItem = (props) => {
   const deleteTodoHandler = (title) => {
     axios
       .delete(`http://localhost:8000/api/todo/${title}`)
@@ -12,8 +12,8 @@ function TodoItem(props) {
     <div>
       <p>
         <span style={{ fontWeight: "bold, underline" }}>
-          {props.todo.title} :{" "}
-        </span>{" "}
+          {props.todo.title} :
+        </span>
         {props.todo.description}
         <button
           onClick={() => deleteTodoHandler(props.todo.title)}
@@ -26,6 +26,6 @@ function TodoItem(props) {
       </p>
     </div>
   );
-}
+};
 
 export default TodoItem;
