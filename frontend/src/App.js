@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import TodoView from "./components/TodoListView";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [todoList, setTodoList] = useState([{}]);
@@ -27,41 +26,34 @@ function App() {
   };
 
   return (
-    <div
-      className="App list-group-item  justify-content-center align-items-center mx-auto"
-      style={{ width: "400px", backgroundColor: "white", marginTop: "15px" }}
-    >
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <h6 className="card text-white bg-primary mb-3">
-        FASTAPI - React - MongoDB
-      </h6>
-      <div className="card-body">
-        <h5 className="card text-white bg-dark mb-3">Add Your Task</h5>
-        <span className="card-text">
+    <div class="App list-group-item flex justify-center items-center mx-auto w-96 bg-white mt-4">
+      <h6 class="card text-white bg-primary mb-3">FASTAPI - React - MongoDB</h6>
+      <div class="card-body">
+        <h5 class="card text-white bg-dark mb-3">Add Your Task</h5>
+        <span class="card-text">
           <input
-            className="mb-2 form-control titleIn"
+            class="mb-2 form-control titleIn"
             onChange={(event) => setTitle(event.target.value)}
             placeholder="Title"
           />
           <input
-            className="mb-2 form-control desIn"
+            class="mb-2 form-control desIn"
             onChange={(event) => setDesc(event.target.value)}
             placeholder="Description"
           />
           <button
-            className="btn btn-outline-primary mx-2 mb-3"
-            style={{ borderRadius: "50px", "font-weight": "bold" }}
+            class="btn btn-outline-primary mx-2 mb-3 rounded-full font-bold"
             onClick={addTodoHandler}
           >
             Add Task
           </button>
         </span>
-        <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
+        <h5 class="card text-white bg-dark mb-3">Your Tasks</h5>
         <div>
           <TodoView todoList={todoList} />
         </div>
       </div>
-      <h6 className="card text-dark bg-warning py-1 mb-0">
+      <h6 class="card text-dark bg-warning py-1 mb-0">
         Copyright 2021, All rights reserved &copy;
       </h6>
     </div>
