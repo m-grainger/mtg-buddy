@@ -31,12 +31,7 @@ function App() {
       className="App list-group-item  justify-content-center align-items-center mx-auto"
       style={{ width: "400px", backgroundColor: "white", marginTop: "15px" }}
     >
-      <h1
-        className="card text-white bg-primary mb-1"
-        styleName="max-width: 20rem;"
-      >
-        Task Manager
-      </h1>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <h6 className="card text-white bg-primary mb-3">
         FASTAPI - React - MongoDB
       </h6>
