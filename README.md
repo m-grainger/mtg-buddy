@@ -1,2 +1,2 @@
-# farm-stack-todo-app
-simple CRUD app using farm stack
+# MTG Buddy
+Using my todo FARM stack app as boilerplate for a small MTG-related project
