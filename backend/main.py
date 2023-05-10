@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 
-from model import card
+from model import Card
 
 from database import (
     fetch_one_card,
@@ -36,7 +36,7 @@ async def get_card():
     return response
 
 
-@app.get("/api/card/{title}", response_model=card)
+@app.get("/api/card/{title}", response_model=Card)
 async def get_card_by_title(title):
     response = await fetch_one_card(title)
     if response:
