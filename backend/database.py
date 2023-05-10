@@ -1,10 +1,10 @@
 import motor.motor_asyncio
 import traceback
-from model import Todo
+from model import Card
 
 client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/')
-database = client.TodoList
-collection = database.todo
+database = client.mtg
+collection = database.cards
 
 
 def db_error_handler(err, func_name):
@@ -12,7 +12,7 @@ def db_error_handler(err, func_name):
         f"Error was thrown from {func_name} and resulted in error of {err}")
 
 
-async def fetch_one_todo(title):
+async def fetch_one_card(title):
     try:
         document = await collection.find_one({"title": title})
         return document
@@ -22,45 +22,13 @@ async def fetch_one_todo(title):
         db_error_handler(err, func_name)
 
 
-async def fetch_all_todos():
-    todos = []
+async def fetch_all_cards():
+    cards = []
     try:
         cursor = collection.find({})
         async for document in cursor:
-            todos.append(Todo(**document))
-        return todos
-    except Exception as err:
-        tb_str = traceback.extract_tb(err.__traceback__).as_list()
-        func_name = tb_str[-1][2]
-        db_error_handler(err, func_name)
-
-
-async def create_todo(todo):
-    try:
-        document = todo
-        result = await collection.insert_one(document)
-        return document
-    except Exception as err:
-        tb_str = traceback.extract_tb(err.__traceback__).as_list()
-        func_name = tb_str[-1][2]
-        db_error_handler(err, func_name)
-
-
-async def update_todo(title, desc):
-    try:
-        await collection.update_one({"title": title}, {"$set": {"description": desc}})
-        document = await collection.find_one({"title": title})
-        return document
-    except Exception as err:
-        tb_str = traceback.extract_tb(err.__traceback__).as_list()
-        func_name = tb_str[-1][2]
-        db_error_handler(err, func_name)
-
-
-async def remove_todo(title):
-    try:
-        await collection.delete_one({"title": title})
-        return True
+            cards.append(Card(**document))
+        return cards
     except Exception as err:
         tb_str = traceback.extract_tb(err.__traceback__).as_list()
         func_name = tb_str[-1][2]
