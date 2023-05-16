@@ -1,7 +1,6 @@
+import json
 from fastapi import FastAPI, HTTPException
-
 from model import Card
-
 from database import (
     fetch_one_card,
     fetch_all_cards,
@@ -38,9 +37,9 @@ async def get_card():
 
 @app.get("/api/card/{cardId}", response_model=Card)
 async def get_card_by_title(cardId):
-    print("check check????")
     response = await fetch_one_card(cardId)
-    print(response)
+    for stuff in response:
+        print(stuff)
     if response:
         return response
     raise HTTPException(404, f"There is no card with the title {cardId}")

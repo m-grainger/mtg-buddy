@@ -23,10 +23,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async (cardId) => {
       try {
-        console.log("test????????");
         const res = await axios.get(`http://localhost:8000/api/card/${cardId}`);
-        console.log(`circus in app ${JSON.stringify(res.data, null, 2)}`);
-        console.log(res.data.name);
         setCardData(res.data);
         return res;
       } catch (error) {
@@ -57,8 +54,14 @@ const App = () => {
       <div className="h-screen w-screen flex justify-center items-center mt-10">
         <div className="w-[90%] h-[90%] flex justify-center items-center bg-pink-300 bg-opacity-20 rounded-lg p-10">
           <div className="w-3/5 h-full border-black border-2 rounded-lg mr-4">
-            {/*             <Card cardId={cardData.cardId} cardName={cardData.cardName} /> */}
-            {cardData && <Card cardId={cardData.name} cardName={cardData.id} />}
+            {cardData && (
+              <Card
+                cardName={cardData.name}
+                flavorText={cardData.flavor_text}
+                cardPic={cardData.image_uris}
+              />
+            )}
+            {cardData && console.log(cardData)}
           </div>
           <div className="w-2/5 h-full border-black border-2 rounded-lg"></div>
         </div>

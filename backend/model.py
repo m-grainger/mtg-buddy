@@ -6,3 +6,5 @@ class Card(BaseModel):
     id: str
     uri: str
     type_line: str
+    flavor_text: str
+    image_uris: object
