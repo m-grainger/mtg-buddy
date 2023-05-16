@@ -1,15 +1,16 @@
 import "./App.css";
 import Card from "./components/Card";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const App = () => {
   const [cardData, setCardData] = useState(null);
   const [inputValue, setInputValue] = useState("");
+  const [cardList, setCardList] = useState([]);
 
-  const fetchData = async (cardId) => {
+  const fetchData = async (cardName) => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/card/${cardId}`);
+      const res = await axios.get(`http://localhost:8000/api/card/${cardName}`);
       setCardData(res.data);
       return res;
     } catch (error) {
@@ -17,9 +18,10 @@ const App = () => {
     }
   };
 
-  /*   useEffect(() => {
-    fetchData("0000579f-7b35-4ed3-b44c-db2a538066fe");
-  }, []); */
+  const handleAddCard = () => {
+    const newCard = { name: cardData.name };
+    setCardList([...cardList, newCard]);
+  };
 
   const handleFetchData = () => {
     fetchData(inputValue);
@@ -42,6 +44,13 @@ const App = () => {
         >
           Submit
         </button>
+        <button
+          type="submit"
+          onClick={handleAddCard}
+          className="ml-2 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-bold"
+        >
+          Add to Collection
+        </button>
       </div>
       <div className="h-screen w-screen flex justify-center items-center mt-10">
         <div className="w-[90%] h-[90%] flex justify-center items-center bg-pink-300 bg-opacity-20 rounded-lg p-10">
@@ -55,7 +64,11 @@ const App = () => {
             )}
             {cardData && console.log(cardData)}
           </div>
-          <div className="w-2/5 h-full border-black border-2 rounded-lg"></div>
+          <div className="w-2/5 h-full border-black border-2 rounded-lg">
+            {cardList.map((card, index) => (
+              <div key={index}>{card.name}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

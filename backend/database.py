@@ -12,11 +12,11 @@ def db_error_handler(err, func_name):
         f"Error was thrown from {func_name} and resulted in error of {err}")
 
 
-async def fetch_one_card(cardId):
+async def fetch_one_card(cardName):
     try:
-        print(f"\n\n\ninside fetch_one_card {cardId}\n\n\n")
+        print(f"\n\n\ninside fetch_one_card {cardName}\n\n\n")
         # document = await collection.find_one({"name": "Fury Sliver"})
-        document = await collection.find_one({"id": cardId})
+        document = await collection.find_one({"name": cardName})
         return document
     except Exception as err:
         tb_str = traceback.extract_tb(err.__traceback__).as_list()
