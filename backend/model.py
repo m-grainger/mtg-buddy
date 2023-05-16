@@ -2,5 +2,7 @@ from pydantic import BaseModel
 
 
 class Card(BaseModel):
+    name: str
+    id: str
     uri: str
-    oracle_text: str
+    type_line: str

@@ -1,4 +1,4 @@
-import Card from "./Card";
+/* import Card from "./Card";
 
 const CardView = (props) => {
   return (
@@ -12,4 +12,4 @@ const CardView = (props) => {
   );
 };
 
-export default CardView;
+export default CardView; */

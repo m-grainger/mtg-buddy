@@ -36,9 +36,11 @@ async def get_card():
     return response
 
 
-@app.get("/api/card/{title}", response_model=Card)
-async def get_card_by_title(title):
-    response = await fetch_one_card(title)
+@app.get("/api/card/{cardId}", response_model=Card)
+async def get_card_by_title(cardId):
+    print("check check????")
+    response = await fetch_one_card(cardId)
+    print(response)
     if response:
         return response
-    raise HTTPException(404, f"There is no card with the title {title}")
+    raise HTTPException(404, f"There is no card with the title {cardId}")
